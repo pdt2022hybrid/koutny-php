@@ -10,8 +10,9 @@
         echo $content;
     };
     function OpenSaveToFile($file, $content) {
-        $file = fopen($file, "r+");
-        fwrite($file, $content . " " . "\n");
+        // $fileA = fopen($file, "r+");
+        // fwrite($file, $content . " " . "\n");
+        file_put_contents($file, $content . ",", FILE_APPEND);
     };
     function checkIfLate($file) {
         // $content = file_get_contents($file);
@@ -31,14 +32,14 @@
 
         if($sekundyOdPolnoci > 28800) { //Uz funguje
             echo "Late! - " . date("H:i:s");
-            OpenSaveToFile("../log.txt", $sekundyOdPolnoci);
+            OpenSaveToFile("log.txt", date("H:i:s"));
         } else {
             echo "On time! - " . date("H:i:s");
-            OpenSaveToFile("../log.txt", $sekundyOdPolnoci);
+            OpenSaveToFile("log.txt", date("H:i:s"));
         };
     };
     
-    checkIfLate("../log.txt");
+    checkIfLate("log.txt");
     printOut("<br>");
     // printOut("Ahoj!");
     printOut("<br>");
