@@ -2,26 +2,17 @@
     $crtTime = date("d.m.Y") . " - " . date("H:i:s"); 
     $timeOnly = date("H:i:s");
 
-    readfile("../views/index.html");
+    // include("../views/main.php");
 
     date_default_timezone_set('Europe/Berlin');
-
     function printOut($content) {
         echo $content;
     };
     function OpenSaveToFile($file, $content) {
-        // $fileA = fopen($file, "r+");
-        // fwrite($file, $content . " " . "\n");
         file_put_contents($file, $content . ",", FILE_APPEND);
     };
     function checkIfLate($file) {
-        // $content = file_get_contents($file);
-
-        // $contentB = substr($content, 0, 5);
-
         $sekundyOdPolnoci = time() - strtotime("today");
-
-        // $contentC = substr($content, 1, 1);
 
         if(72000 < $sekundyOdPolnoci) {
             if(82800 > $sekundyOdPolnoci) {
